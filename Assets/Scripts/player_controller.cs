@@ -1,16 +1,22 @@
 using UnityEngine;
+using System.Collections;
 
 public class player_controller : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private float speed = 5.0f;
+    private Rigidbody2D rb;
+
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        float moveHorizontal = Input.GetAxis("Horizontal");
+        float moveVertical = Input.GetAxis("Vertical");
+
+        Vector2 movement = new Vector2(moveHorizontal, moveVertical);
+        rb.linearVelocity = movement * speed;
     }
 }
